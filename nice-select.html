@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nice select</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" />
+    <style>
+        *{
+            font-family: 'Nunito', sans-serif;
+        }
+        body{
+            font-family: 'Nunito', sans-serif;
+        }
+        .wrapper{
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0px 14px;
+            display: flex;
+            flex-direction: column;
+        }
+        /* - main nice select style - */
+        .nice-select{
+            height: 53px;
+            line-height: 53px;
+            border: none;
+            background-color: #F7F8FA;
+            border-radius: 10px;
+            min-width: 95px;
+            width: max-content;
+        }
+        .nice-select::after{
+            height: 7px;
+            width: 7px;
+            border-color: #7B8CB5;
+        }
+        .nice-select .current{
+            color: #7B8CB5;
+            font-weight: 700;
+            font-size: 17px;
+        }
+
+        .nice-select .list{
+            background-color: #fff;
+            border: none;
+            box-shadow: 0px 10px 100px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            border: none !important;
+        }
+        .nice-select .list .selected{
+            border: none !important;
+        }
+        .nice-select .list li{
+            font-weight: 700;
+            font-size: 15px;
+            color: #313A5A;
+        }
+
+        .nice-select .option:hover{
+            background-color: #EAF2FE;
+            color: #2176FF;
+        }
+        .nice-select .option:hover, .nice-select .option.focus, .nice-select .option.selected.focus {
+            background-color: #EAF2FE;
+            color: #2176FF;
+        }
+        
+        .nice__select__with__icon{
+            display: flex;
+            align-items: center;
+            background-color: #F7F8FA;
+            width: max-content;
+            border-radius: 10px;
+            padding-left: 16px;
+        }
+        .nice__select__with__icon .nice-select{
+            border-radius: 0px;
+            background-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <div class="wrapper">
+        <h3>Nice select component</h3>
+        <!-- without icon -->
+        <h4>Without icon</h4>
+        <select class="nice__select">
+            <option data-display="All">All</option>
+            <option value="1">Some option</option>
+            <option value="2">Another option</option>
+            <option value="3" disabled="">A disabled option</option>
+            <option value="4">Potato</option>
+        </select>
+        <h4>With icon</h4>
+        <!-- with icon -->
+        <div class="nice__select__with__icon">
+            <img src="./sortby-light.svg" class="filter__icon" alt="">
+            <select class="nice__select">
+               <option data-display="All">All</option>
+               <option value="1">Some option</option>
+               <option value="2">Another option</option>
+               <option value="3" disabled="">A disabled option</option>
+               <option value="4">Potato</option>
+             </select>
+         </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+    <script>
+        $(function(){
+            // nice select active
+            $('.nice__select').niceSelect();
+    
+            // niceselect get value and chnage default select color
+            $(document).on("click", ".nice-select .option:not(.disabled)", function (t) {                    
+                // get value
+                var s = $(this),
+                n = s.closest(".nice-select");
+                // alert(s.data("value"));
+                console.log(s.data("value"));
+            })
+        })
+    </script>
+</body>
+</html>
